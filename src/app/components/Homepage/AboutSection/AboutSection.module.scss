@@ -1,0 +1,104 @@
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5rem 0;
+  overflow-x: hidden;
+
+  @media (max-width: 575.98px) {
+    padding: 0;
+    padding-bottom: 5rem;
+  }
+  &__body {
+    padding: 0 5rem 5rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    @media (max-width: 575.98px) {
+      padding: 2rem;
+    }
+    &__logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      &__logo {
+        height: 90px;
+        @media (max-width: 575.98px) {
+          width: 50%;
+        }
+        img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    &__title {
+      font-weight: 600;
+      font-size: 3rem;
+      @media (max-width: 575.98px) {
+        font-size: 1rem;
+        max-width: 100%;
+      }
+    }
+    &__desc {
+      font-weight: 200;
+      max-width: 60%;
+      margin: auto;
+      @media (max-width: 575.98px) {
+        font-size: 1rem;
+        max-width: 100%;
+      }
+    }
+    &__cta {
+      margin-top: 2rem;
+      align-self: center;
+      border: 1px solid #151515;
+      padding: 0.5rem 2rem;
+      font-size: 1.2rem;
+    }
+  }
+  &__bottom_bg {
+    width: 100%;
+    background-image: url('../../../../../public/images/1314633952.jpg');
+    height: 600px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    @media (max-width: 575.98px) {
+      background-size: cover;
+      height: 200px;
+    }
+  }
+  &__text_slider {
+    margin-top: 5rem;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    @media (max-width: 575.98px) {
+      margin-top: 2rem;
+    }
+
+    p {
+      -webkit-text-fill-color: white;
+      -webkit-text-stroke: 1px #325404;
+      font-size: calc(6rem + 1vw);
+      font-weight: 800;
+      margin: 0;
+      @media (max-width: 575.98px) {
+        font-size: calc(3rem + 1vw);
+      }
+      &:nth-of-type(2) {
+        position: absolute;
+        left: 100%;
+        padding-inline-start: 10rem;
+      }
+    }
+  }
+}

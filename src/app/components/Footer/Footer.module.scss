@@ -1,0 +1,147 @@
+#footer {
+  width: 100%;
+  background-color: #145026;
+  padding: 0 5rem;
+  margin-top: 4rem;
+  @media (max-width: 575.98px) {
+    padding: 1rem;
+  }
+  .logo {
+    @media (max-width: 575.98px) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .footer_body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 12px;
+    position: relative;
+    padding-block: 4rem;
+    @media (max-width: 575.98px) {
+      padding: 1rem 0;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    a {
+      &:hover {
+        border-bottom: 1px solid white;
+      }
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: white;
+
+      .list_title {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      li {
+        font-weight: 100;
+        font-size: 0.9rem;
+      }
+    }
+
+    .signup {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      font-size: 20px;
+      color: white;
+      gap: 1rem;
+      @media (max-width: 575.98px) {
+        width: 100%;
+      }
+      &__title {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        h6 {
+          font-size: 18px;
+        }
+        p {
+          font-weight: 200;
+          margin: 0;
+          font-size: 12px;
+        }
+      }
+      &__input {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        input,
+        button {
+          font-size: 14px;
+          padding: 15px;
+          border: none;
+        }
+        input {
+          background-color: transparent;
+          outline: 1px solid #b8b8b8;
+          font-size: 14px;
+          padding: 15px;
+          color: white;
+
+          &::placeholder {
+            font-weight: 100;
+            color: white;
+          }
+        }
+
+        button {
+          color: #145026;
+          background-color: #ffffff;
+          font-weight: bold;
+          cursor: pointer;
+          &:hover {
+            background-color: transparent;
+            color: white;
+            outline: 1px solid #b8b8b8;
+          }
+        }
+      }
+    }
+  }
+
+  .footer_bottom {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 5px;
+    color: #b8b8b8;
+    padding-block: 1.5rem;
+    border-top: 1px solid white;
+    @media (max-width: 575.98px) {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .languages,
+    .privacy,
+    .copyrights {
+      font-weight: 200;
+      font-size: 0.8rem;
+      flex: 1;
+      @media (max-width: 575.98px) {
+        flex: auto;
+      }
+    }
+    .copyrights {
+      text-align: end;
+      @media (max-width: 575.98px) {
+        text-align: center;
+      }
+    }
+    .privacy {
+      text-align: center;
+      @media (max-width: 575.98px) {
+        text-align: end;
+      }
+    }
+  }
+}
