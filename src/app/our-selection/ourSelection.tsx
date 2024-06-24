@@ -19,6 +19,7 @@ export const OurSelection = () => {
 
             <div className={styles.ceylon_tea_kinds}>
                 <h4>Our Type Of Tea</h4>
+                <span></span>
                 <div className={styles.kind}>
                     <div className={styles.kind__image}>
                         <Image src={img3} alt="" />
@@ -57,6 +58,27 @@ export const OurSelection = () => {
                             goodness, our green teas are perfect for
                             health-conscious consumers looking for a refreshing
                             and revitalizing beverage option.
+                        </p>
+                    </div>
+                </div>
+                <div className={styles.kind}>
+                    <div className={styles.kind__image}>
+                        <Image src={img3} alt="" />
+                    </div>
+                    <div className={styles.kind__body}>
+                        <h5>Black Tea</h5>
+                        <p>
+                            Akbar Brothers diverse black tea range, including
+                            grades such as Dust, BOP, BOPF, and OP, each
+                            offering a unique cup color and flavor profile. The
+                            Dust grade creates a deep, dark infusion, ideal for
+                            a strong and invigorating cup. BOP infuses into a
+                            rich amber hue, delivering a robust and full-bodied
+                            taste. BOPF brews into a brisk golden cup, perfect
+                            for a refreshing experience. And, OP, with its
+                            coppery liquor, offers a smooth and aromatic flavor.
+                            Explore Akbar Brothers &apos; black tea range to
+                            find your preferred cup color and flavor intensity.
                         </p>
                     </div>
                 </div>

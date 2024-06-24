@@ -53,9 +53,17 @@
   @media (max-width: 575.98px) {
     max-width: 100%;
   }
+  span{
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: #145026;
+      margin: 20px auto;
+  }
   h4 {
     font-size: 2rem;
   }
+
   .kind {
     display: flex;
     justify-content: center;
