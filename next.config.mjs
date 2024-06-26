@@ -3,6 +3,8 @@ import path from 'path';
 const nextConfig = {
   sassOptions: {
     includePaths: ['./public'],
+  },images: {
+    domains: ['cupofchange-eg.com']
   },
 };
 

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import styles from "./ourSelection.module.scss";
@@ -5,8 +7,40 @@ import img1 from "../../../public/images/our-selection/6-2@2x.png";
 import img2 from "../../../public/images/our-selection/6-3@2x.png";
 import img3 from "../../../public/images/our-selection/6@2x.png";
 import img6 from "../../../public/images/our-selection/6-1@2x.png";
+import { useEffect, useState } from "react";
+
+type Brand = {
+    id: number;
+    name: string;
+    description: string;
+    image_url: string;
+};
 
 export const OurSelection = () => {
+    const [brand, setBrand] = useState<Brand[]>([]);
+
+    const fetchBrand = async () => {
+        try {
+            const response = await fetch(
+                "https://cupofchange-eg.com/dashboard/api/products"
+            );
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+            if (data && data.data && data.data.length > 0) {
+                setBrand(data.data);
+            } else {
+                console.error("Empty response received");
+            }
+        } catch (error) {
+            console.error("Error fetching Brand:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchBrand();
+    }, []);
     return (
         <div className={styles.our_selection}>
             <div className={styles.our_selection__hero}>
@@ -20,28 +54,21 @@ export const OurSelection = () => {
             <div className={styles.ceylon_tea_kinds}>
                 <h4>Our Type Of Tea</h4>
                 <span></span>
-                <div className={styles.kind}>
-                    <div className={styles.kind__image}>
-                        <Image src={img3} alt="" />
+
+                {brand.map((onebrand) => (
+                    <div className={styles.kind} key={onebrand.id}>
+                        <div className={styles.kind__image}>
+                            <Image src={onebrand.image_url} alt="" width={500} height={500}/>
+                        </div>
+                        <div className={styles.kind__body}>
+                            <h5>{onebrand.name}</h5>
+                            <p>
+                              {onebrand.description}
+                            </p>
+                        </div>
                     </div>
-                    <div className={styles.kind__body}>
-                        <h5>Black Tea</h5>
-                        <p>
-                            Akbar Brothers diverse black tea range, including
-                            grades such as Dust, BOP, BOPF, and OP, each
-                            offering a unique cup color and flavor profile. The
-                            Dust grade creates a deep, dark infusion, ideal for
-                            a strong and invigorating cup. BOP infuses into a
-                            rich amber hue, delivering a robust and full-bodied
-                            taste. BOPF brews into a brisk golden cup, perfect
-                            for a refreshing experience. And, OP, with its
-                            coppery liquor, offers a smooth and aromatic flavor.
-                            Explore Akbar Brothers &apos; black tea range to
-                            find your preferred cup color and flavor intensity.
-                        </p>
-                    </div>
-                </div>
-                <div className={styles.kind}>
+                ))}
+                {/* <div className={styles.kind}>
                     <div className={styles.kind__image}>
                         <Image src={img1} alt="" />
                     </div>
@@ -136,8 +163,9 @@ export const OurSelection = () => {
                             Perfect for hot days or as a revitalizing pick-me-up
                         </p>
                     </div>
-                </div>
+                </div> */}
             </div>
+            
         </div>
     );
 };

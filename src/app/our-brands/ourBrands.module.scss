@@ -65,9 +65,21 @@
         font-size: 1rem;
       }
     }
+    &__mainone{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+    }
     &__logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      width: 100%;
       @media (max-width: 575.98px) {
         width: 50%;
+        display: flex;
         img {
           height: auto;
           width: 100%;

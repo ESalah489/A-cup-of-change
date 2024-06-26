@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image';
 import styles from './AboutScreen.module.scss';
 
@@ -8,8 +9,36 @@ import image2 from '../../../public/images/about/Image 14.png';
 import image3 from '../../../public/images/about/tailer-img.png';
 import image4 from '../../../public/images/about/Image 15.png';
 import image5 from '../../../public/images/about/0.70415800_1620658068_45.png';
-
+import { useEffect, useState } from 'react';
+type Award = {
+  id: number;
+  name: string;
+  date: string;
+  image_url: string;
+};
 export const AboutScreen = () => {
+  const [award, setAward] = useState<Award[]>([]);
+
+  const fetchBrand = async () => {
+      try {
+          const response = await fetch("https://cupofchange-eg.com/dashboard/api/awards");
+          if (!response.ok) {
+              throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+          if (data && data.data && data.data.length > 0) {
+            setAward(data.data);
+          } else {
+              console.error("Empty response received");
+          }
+      } catch (error) {
+          console.error("Error fetching Brand:", error);
+      }
+  };
+
+  useEffect(() => {
+      fetchBrand();
+  }, []);
   return (
     <div className={styles.about_wrapper}>
       <div className={styles.hero}>
@@ -62,152 +91,24 @@ export const AboutScreen = () => {
 
       <div className={styles.akbar_brand}>
         <h2 className={styles.title}>THE AKBAR BRAND</h2>
-
-        <div className={styles.akbar_brand__content}>
+        {award.map((oneaward) => (
+        <div className={styles.akbar_brand__content} key={oneaward.id}>
           <div className={styles.akbar_brand__content__img}>
-            <Image src={oscarImage} alt="" />
+            <Image src={oneaward.image_url} alt="" width={400} height={500} />
           </div>
           <div className={styles.akbar_brand__content__tabs}>
             <div className={styles.akbar_brand__content__tabs__tab}>
               <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
+                <p>{oneaward.name}</p>
               </div>
               <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
-              </div>
-            </div>
-            <div className={styles.akbar_brand__content__tabs__tab}>
-              <div className={styles.akbar_brand__content__tabs__tab__text}>
-                <p>Best Exporter In Sri Lankan Tea Industry</p>
-                <p>Globally Outreached Sri Lankan Brand</p>
-              </div>
-              <div className={styles.akbar_brand__content__tabs__tab__date}>
-                <p>2022 / 2023</p>
+                <p>{oneaward.date}</p>
               </div>
             </div>
           </div>
         </div>
+        ))}
       </div>
-
       <div className={styles.ceylon_tea}>
         <div className={styles.ceylon_tea__head}>
           <div className={styles.ceylon_logo}>
