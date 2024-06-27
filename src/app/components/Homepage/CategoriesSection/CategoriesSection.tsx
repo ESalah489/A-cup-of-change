@@ -1,11 +1,5 @@
 "use client";
 import styles from "./CategoriesSection.module.scss";
-import blackTeaIcon from "../../../../../public/images/Image 2.png";
-import greenTeaIcon from "../../../../../public/images/Image 3.png";
-import flavouredGreenTeaIcon from "../../../../../public/images/Image 6.png";
-import flavouredTeaIcon from "../../../../../public/images/Image 7.png";
-import HerbalTeaIcon from "../../../../../public/images/Image 9.png";
-import iceTeaIcon from "../../../../../public/images/Group 377.png";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -89,8 +83,8 @@ export const CategoriesSection = () => {
                             <Image
                                 src={onebrand.main_image_url}
                                 alt={onebrand.name}
-                                width={100}
-                                height={100}
+                                width={500}
+                                height={500}
                             />
                         </div>
                         <p className={styles.categories__content__box__text}>

@@ -2,9 +2,6 @@
 
 import Image from "next/image";
 import styles from "./manufacturing.module.scss";
-import banner from "../../../public/images/manufacturing/Mask Group 5@2x.png";
-import banner2 from "../../../public/images/manufacturing/Mask Group 4@2x.png";
-import certIcon from "../../../public/images/manufacturing/ISO9001-2015@2x.png";
 import { useEffect, useState } from "react";
 
 type Certificates = {

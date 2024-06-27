@@ -5,20 +5,56 @@
     padding: 4rem 1rem;
   }
   &__hero {
+
+    position: relative;
     min-height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url('../../../public/images/Mask Group 5@2x.png');
-    background-size: cover;
     display: flex;
     align-items: center;
+    background-size: cover;
+    background-position: center center;
     justify-content: center;
-    h4 {
+    width: 100% !important;
+    .heroBackground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      z-index: 0;
+    }
+    
+    .heroBackground :global(img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gradientOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      z-index: 1;
+    }
+    .textOverlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+    }
+    
+    .textOverlay h4 {
       color: white;
       font-size: 2.5rem;
       font-weight: 600;
     }
   }
   .separator {
+    width: 100% !important;
     img {
       width: 100%;
       height: auto;

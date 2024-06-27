@@ -28,6 +28,7 @@
                 font-size: 1.4rem;
                 font-weight: 100;
                 line-height: 1.3;
+                text-align: justify;
                 @media (max-width: 575.98px) {
                     font-size: 1rem;
                 }
@@ -42,6 +43,7 @@
                 width: 100%;
                 max-height: 700px;
                 object-fit: contain;
+                float: right;
                 @media (max-width: 575.98px) {
                     max-height: 400px;
                 }
@@ -134,11 +136,11 @@
     }
 }
 .akbar_brand__content__img {
-  display: none;  
+    display: none;
 }
 
 .akbar_brand__content:hover .akbar_brand__content__img {
-  display: block;
+    display: block;
 }
 
 .akbar-brand-dates {
