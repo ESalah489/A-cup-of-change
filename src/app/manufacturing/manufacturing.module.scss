@@ -6,6 +6,10 @@
   padding: 8rem 2.5rem 5rem;
   gap: 3rem;
   color: #472e2d;
+  &__banner {
+    width: 100% !important;
+
+  }
   @media (max-width: 575.98px) {
     gap: 1rem;
     padding-top: 4rem;

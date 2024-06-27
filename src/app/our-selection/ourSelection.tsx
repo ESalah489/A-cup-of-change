@@ -15,6 +15,9 @@ type Brand = {
     description: string;
     image_url: string;
 };
+type BrandTwo = {
+    b2b_brief: string;
+};
 
 export const OurSelection = () => {
     const [brand, setBrand] = useState<Brand[]>([]);
@@ -41,14 +44,38 @@ export const OurSelection = () => {
     useEffect(() => {
         fetchBrand();
     }, []);
+
+    const [brandtwo, setBrandtwo] = useState<BrandTwo | null>(null);
+
+    const fetchBrandtow = async () => {
+        try {
+            const response = await fetch(
+                "https://cupofchange-eg.com/dashboard/api/settings"
+            );
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+            if (data && data.data) {
+                setBrandtwo({
+                    b2b_brief: data.data.b2b_brief,
+                });
+            } else {
+                console.error("Empty response received");
+            }
+        } catch (error) {
+            console.error("Error fetching Brand:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchBrandtow();
+    }, []);
     return (
         <div className={styles.our_selection}>
             <div className={styles.our_selection__hero}>
                 <h4>Teas</h4>
-                <p>
-                    Your B2B Supplier, For Bulk Tea And Private Labelling Ceylon
-                    And Kenyan Teas.
-                </p>
+                {brandtwo && <p>{brandtwo.b2b_brief}</p>}
             </div>
 
             <div className={styles.ceylon_tea_kinds}>
@@ -58,13 +85,16 @@ export const OurSelection = () => {
                 {brand.map((onebrand) => (
                     <div className={styles.kind} key={onebrand.id}>
                         <div className={styles.kind__image}>
-                            <Image src={onebrand.image_url} alt="" width={500} height={500}/>
+                            <Image
+                                src={onebrand.image_url}
+                                alt=""
+                                width={500}
+                                height={500}
+                            />
                         </div>
                         <div className={styles.kind__body}>
                             <h5>{onebrand.name}</h5>
-                            <p>
-                              {onebrand.description}
-                            </p>
+                            <p>{onebrand.description}</p>
                         </div>
                     </div>
                 ))}
@@ -165,7 +195,6 @@ export const OurSelection = () => {
                     </div>
                 </div> */}
             </div>
-            
         </div>
     );
 };

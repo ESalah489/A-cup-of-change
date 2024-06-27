@@ -13,6 +13,13 @@ type Certificates = {
     description: string;
     image_url: string;
 };
+
+type Brand = {
+    manufacturing_page_cover: string;
+    manufacturing_description: string;
+    manufacturing_page_video: string;
+    certifications_description: string;
+};
 export const Manufactoring = () => {
     const [cert, setCert] = useState<Certificates[]>([]);
 
@@ -38,40 +45,77 @@ export const Manufactoring = () => {
     useEffect(() => {
         fetchCert();
     }, []);
+
+    const [brand, setBrand] = useState<Brand | null>(null);
+
+    const fetchBrand = async () => {
+        try {
+            const response = await fetch(
+                "https://cupofchange-eg.com/dashboard/api/settings"
+            );
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+            if (data && data.data) {
+                setBrand({
+                    manufacturing_page_cover:
+                        data.data.manufacturing_page_cover,
+                    manufacturing_description:
+                        data.data.manufacturing_description,
+                    manufacturing_page_video:
+                        data.data.manufacturing_page_video,
+                    certifications_description:
+                        data.data.certifications_description,
+                });
+            } else {
+                console.error("Empty response received");
+            }
+        } catch (error) {
+            console.error("Error fetching Brand:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchBrand();
+    }, []);
     return (
         <section className={styles.manufacturing} id="manufacturing">
-            <div className={styles.manufacturing__banner}>
-                <Image src={banner} alt="" />
-            </div>
+            {brand && (
+                <>
+                    <div className={styles.manufacturing__banner}>
+                        <Image
+                            src={brand.manufacturing_page_cover}
+                            layout="responsive"
+                            width={50}
+                            height={50}
+                            alt="hero cover"
+                        />
+                    </div>
 
-            <h3>MANUFACTURING</h3>
-            <p>
-                Akbar Brothers Operates Sri Lankas Largest Ceylon Tea
-                Manufacturing Facility In Kelaniya, Spanning 276,000 Square
-                Feet. They Prioritize Maintaining The Highest Standards Of
-                Quality And Freshness Throughout The Tea Production Process.
-                This Involves Meticulous Attention To Detail, From Sourcing
-                Ingredients To Blending, Processing, And Packaging The Tea.{" "}
-                <br />
-                <br /> The Facility Boasts Cutting-Edge Machinery Imported From
-                Germany, Italy, And Japan, Ensuring Efficiency And Adherence To
-                Strict Hygiene Standards By Minimizing Human Contact. Akbar
-                Brothers Holds Various Certifications Such As ISO 9001, ISO
-                22000, Good Manufacturing Practice, And Fair Trade, Reflecting
-                Their Commitment To International Standards And Quality Control.
-            </p>
+                    <h3>MANUFACTURING</h3>
+                    <p>{brand.manufacturing_description}</p>
 
-            <div className={styles.manufacturing__banner}>
-                <Image src={banner2} alt="" />
-            </div>
-            <div className={styles.certification}>
-                <h3 className={styles.certification__title}>CERTIFICATIONS</h3>
-                <p className={styles.certification__subtitle}>
-                    Akbar Brother (Pvt) Limited To Become The First Ever Sri
-                    Lankan Tea Company To Be Awarded The Internationally
-                    Recognized ISO 9001 And HACCP Quality Certificates.
-                </p>
-            </div>
+                    <div className={styles.manufacturing__banner}>
+                        <video controls width="100%" autoPlay>
+                            <source
+                                src={brand.manufacturing_page_video}
+                                type="video/mp4"
+                            />
+                            Your browser does not support the video tag.
+                        </video>{" "}
+                    </div>
+                    <div className={styles.certification}>
+                        <h3 className={styles.certification__title}>
+                            CERTIFICATIONS
+                        </h3>
+                        <p className={styles.certification__subtitle}>
+                            {brand.certifications_description}
+                        </p>
+                    </div>
+                </>
+            )}
+
             <div className={styles.certification__wrapper}>
                 {cert.length > 0 ? (
                     cert.map((onecert) => (

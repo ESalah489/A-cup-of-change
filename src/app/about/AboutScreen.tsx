@@ -16,6 +16,7 @@ type Award = {
   date: string;
   image_url: string;
 };
+
 export const AboutScreen = () => {
   const [award, setAward] = useState<Award[]>([]);
 
