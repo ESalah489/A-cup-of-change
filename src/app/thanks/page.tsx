@@ -1,3 +1,3 @@
-import { thanks } from './thanks';
+import  Thanks  from './thanks';
 
-export default thanks;
+export default Thanks;

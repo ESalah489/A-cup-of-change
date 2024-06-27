@@ -1,16 +1,17 @@
-
 "use client";
 import React from "react";
 import Image from "next/image";
 import styles from "./thanks.module.scss";
 import { useEffect, useState } from "react";
 
-type Thanks = {
+type ThanksType = {
     thank_you_message: string;
     thank_you_page_image: string;
 };
-export const thanks = () => {
-    const [thanks, setThanks] = useState<Thanks | null>(null);
+
+const Thanks: React.FC = () => {
+    const [thanks, setThanks] = useState<ThanksType | null>(null);
+
     const fetchThanks = async () => {
         try {
             const response = await fetch(
@@ -36,29 +37,36 @@ export const thanks = () => {
     useEffect(() => {
         fetchThanks();
     }, []);
+
     return (
         <React.Fragment>
-        <div className={styles.about_wrapper}>
-            <div className={styles.hero}>
-            {thanks && (
-                <>
-                <div className={styles.hero__content}>
-                    <h2 className={styles.hero__content__title}>
-                        Thank you for getting in touch with us
-                    </h2>
-                    <p className={styles.hero__content__desc}>
-                        {thanks.thank_you_message}
-                    </p>
+            <div className={styles.about_wrapper}>
+                <div className={styles.hero}>
+                    {thanks && (
+                        <>
+                            <div className={styles.hero__content}>
+                                <h2 className={styles.hero__content__title}>
+                                    Thank you for getting in touch with us
+                                </h2>
+                                <p className={styles.hero__content__desc}>
+                                    {thanks.thank_you_message}
+                                </p>
+                            </div>
+                            <div className={styles.hero__img}>
+                                <Image 
+                                    src={thanks.thank_you_page_image} 
+                                    alt="" 
+                                    width={550} 
+                                    height={550} 
+                                />
+                            </div>
+                        </>
+                    )}
                 </div>
-                <div className={styles.hero__img}>
-                    <Image src={thanks.thank_you_page_image} alt=""  width={550} height={550} />
-                </div>
-                </>
-                )}
             </div>
-        </div>
         </React.Fragment>
     );
 };
 
-export default thanks;
+export default Thanks;
+

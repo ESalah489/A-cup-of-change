@@ -68,7 +68,7 @@ export const ContactUs = () => {
             );
             console.log("Form submission successful:", response.data);
             window.location.href = '/thanks'; 
-        } catch (error) {
+        } catch (error:any) {
             if (error.response && error.response.data.errors) {
                 const errorMessages = Object.keys(error.response.data.errors)
                     .map(field => error.response.data.errors[field].join(", "));
