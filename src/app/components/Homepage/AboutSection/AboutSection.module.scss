@@ -57,16 +57,30 @@
       }
     }
     &__cta {
-      margin-top: 2rem;
-      align-self: center;
-      border: 1px solid #151515;
-      padding: 0.5rem 2rem;
       font-size: 1.2rem;
+      @media (max-width: 575.98px) {
+        font-size: 1rem;
+      }
+&__btn {
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 1rem 2.5rem;
+  border: 1px solid #000;
+
+  background-color: transparent;
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  &:hover {
+    color: #fff;
+    background-color: #145026;
+    border: 1px solid #145026;
+  }
+}
     }
   }
   &__bottom_bg {
     width: 100%;
-    // background-image: url('../../../../../public/images/1314633952.jpg');
     height: 600px;
     background-size: 100% 100%;
     background-repeat: no-repeat;

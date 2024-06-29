@@ -110,6 +110,7 @@ export const OurBrands = () => {
                                 alt={`${brand.name} logo`}
                                 width={250}
                                 height={100}
+                                layout="responsive"
                             />
                         </div>
                         <div className={styles.brand__info}>

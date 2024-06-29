@@ -98,9 +98,9 @@ export const OurSelection = () => {
                             <Image
                                 src={onebrand.image_url}
                                 alt=""
-                                // layout="responsive"
-                                width={500}
-                                height={500}
+                                layout="responsive"
+                                width={0}
+                                height={0}
                             />
                         </div>
                         <div className={styles.kind__body}>

@@ -88,8 +88,8 @@ export const AboutSection = () => {
                                 <Image
                                     src={brand.ranfer_logo}
                                     // layout="responsive"
-                                    width={50}
-                                    height={50}
+                                    width={100}
+                                    height={100}
                                     alt="Ranfer Logo"
                                 />
                             </div>
@@ -101,9 +101,12 @@ export const AboutSection = () => {
                             {brand.history_brief}
                         </p>
 
-                        <a href="#!" className={`${styles.about__body__cta}`}>
+                        {/* <a href="#!" className={`${styles.about__body__cta}`}>
                             Know more
-                        </a>
+                        </a> */}
+                        <div className={`${styles.about__body__cta}`}>
+                                    <button className={styles.about__body__cta__btn}>Know more</button>
+                                </div>
                     </div>
                     <div className={`${styles.about__bottom_bg}`}>
                         <Image

@@ -1,51 +1,100 @@
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: transparent;
+
+  &.activeNavHeader {
+    background-color: #fff; 
+    color: #145026; 
+    box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+
+    .nav__list__item:hover {
+      border-bottom: 1px solid #000;
+
+    }
+    .nav__list__item a {
+      color: #145026; 
+    }
+
+    .nav__list__btn a {
+      color: #000; 
+    }
+
+    .nav__list__btn {
+      border-color: #000; 
+    }
+    .logo {
+      color: #000;
+    }
+  }
+}
+
 .nav {
   display: flex;
-  color: white;
+  color: #f9f8f4;
   align-items: center;
   justify-content: space-between;
   padding: 2.5rem;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 80px;
+  z-index: 1000;
+  background-color: transparent; 
+  transition: background-color 0.3s ease, color 0.3s ease;
   @media (max-width: 575.98px) {
     padding: 1rem;
   }
+
   &.contact_page {
     color: #145026;
+
     .nav__list__btn {
       border-color: #145026;
+      
     }
+    
   }
+
   .logo {
     text-transform: uppercase;
   }
+
   &__list {
     display: flex;
     align-items: center;
     list-style: none;
     gap: 2rem;
+
     @media (max-width: 575.98px) {
       display: none;
     }
+
     &__item {
       a {
-        font-weight: 200;
+        font-weight: 300;
         font-size: 1rem;
+
         &.active_item {
           font-weight: 600;
         }
       }
+
       text-transform: capitalize;
+
       &:hover {
         border-bottom: 1px solid white;
       }
     }
+
     &__btn {
       a {
         display: inline-block;
         padding: 0.5rem 1rem;
       }
+
       border: 1px solid white;
     }
   }

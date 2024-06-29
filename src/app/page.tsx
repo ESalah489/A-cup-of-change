@@ -149,7 +149,7 @@ export default function Home() {
                                     {brand.subtitle}
                                 </div>
                                 <div className={`${styles.hero__body__content__cta}`}>
-                                    Know more
+                                    <button className={styles.hero__body__content__cta__btn}>Know more</button>
                                 </div>
                             </div>
                         </>

@@ -76,7 +76,7 @@
   color: #472e2d;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  max-width: 80%;
+  max-width: 90%;
   margin-inline: auto;
   @media (max-width: 575.98px) {
     max-width: 100%;
@@ -111,7 +111,7 @@
       }
     }
     &__image {
-      flex: 0.8;
+      // flex: 0.8;  
       text-align: center;
       img {
         width: 100%;
