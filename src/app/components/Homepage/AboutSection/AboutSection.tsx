@@ -30,7 +30,7 @@ export const AboutSection = () => {
             gsap.set(secondText.current, { xPercent: xPercent });
         }
 
-        xPercent += 0.1 * direction;
+        xPercent += 0.09 * direction;
         requestAnimationFrame(animation);
     }, []);
 
